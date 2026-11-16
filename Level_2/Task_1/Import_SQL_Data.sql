@@ -1,0 +1,23 @@
+CREATE TABLE sales_data (
+    Order_Id VARCHAR(50),
+    Order_Date DATE,
+    Ship_Date DATE,
+    Ship_Mode VARCHAR(50),
+    Customer_Name VARCHAR(100),
+    Segment VARCHAR(50),
+    State VARCHAR(100),
+    Country VARCHAR(100),
+    Market VARCHAR(50),
+    Region VARCHAR(50),
+    Product_Id VARCHAR(50),
+    Category VARCHAR(50),
+    Sub_Category VARCHAR(50),
+    Product_Name VARCHAR(255),
+    Sales NUMERIC(12, 2),
+    Quantity INT,
+    Discount NUMERIC(5, 2),
+    Profit NUMERIC(12, 2),
+    Shipping_Cost NUMERIC(10, 2),
+    Order_Priority VARCHAR(50),
+    Year INT
+);

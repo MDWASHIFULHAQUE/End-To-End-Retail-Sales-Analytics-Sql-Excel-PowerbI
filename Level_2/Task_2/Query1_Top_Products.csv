@@ -1,0 +1,79 @@
+--Top 10 profitable products
+SELECT Product_Name, Sum(Profit) AS Total_Profit
+FROM sales_data
+WHERE Product_Name IS NOT NULL
+GROUP BY Product_Name
+ORDER BY Total_Profit DESC
+LIMIT 10;
+
+--Top 10 Customer by Sales
+SELECT Customer_Name, SUM(Sales) AS Total_Sales
+FROM sales_data
+WHERE Customer_Name IS NOT NULL
+GROUP BY Customer_Name
+ORDER BY Total_Sales DESC
+LIMIT 10;
+
+--Region Wise total sales
+SELECT Region, SUM(Sales) AS Total_sales
+FROM sales_data
+WHERE Region IS NOT NULL
+GROUP BY Region 
+ORDER BY Total_Sales DESC;
+
+--Category Wise average profit
+SELECT Category, ROUND(AVG(Profit), 2) AS Avg_Profit
+FROM sales_data
+WHERE Category IS NOT NULL
+GROUP BY Category
+ORDER BY Avg_Profit DESC;
+
+--Highest Discount Category
+SELECT Category,Round(AVG(Discount), 4) AS Avg_Discount
+FROM sales_data
+WHERE Category IS NOT NULL
+GROUP BY Category
+ORDER BY Avg_Discount DESC
+LIMIT 1;
+
+--Orders with negative profit
+SELECT Order_Id, Product_Name, Sales, Profit
+FROM sales_data
+WHERE Profit < 0
+ORDER BY Profit ASC;
+
+--Monthly Sales Trend
+SELECT EXTRACT(Month FROM Order_Date) AS Month_Num,
+      TO_CHAR(Order_Date, 'Month') AS Month_Name,
+	  SUM(Sales) AS Total_Sales
+FROM sales_data
+WHERE Order_date IS NOT NULL
+GROUP BY Month_Num, Month_Name
+ORDER BY Month_NUM;
+
+--Market Wise Revenue Analysis 
+SELECT Market, SUM(Sales) AS Total_Revenue, SUM(Profit) AS Total_Profit
+FROM sales_data
+WHERE Market IS NOT NULL
+GROUP BY Market
+ORDER BY Total_Revenue DESC;
+
+--Top Performing Sub_Category
+SELECT Sub_Category, SUM(Sales) AS Total_Sales, SUM(Profit) AS Total_Profit
+FROM sales_data
+WHERE Sub_Category IS NOT NULL
+GROUP BY Sub_Category
+ORDER BY Total_Sales DESC;
+
+--Ship_Mode Usages Analysis
+SELECT Ship_mode, COUNT(*) AS Total_Orders, SUM(Sales) AS Total_Sales
+FROM sales_data
+WHERE Ship_mode IS NOT NULL
+GROUP BY Ship_Mode
+ORDER BY Total_Orders DESC;
+
+
+
+
+
+
